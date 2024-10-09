@@ -1,0 +1,22 @@
+<h1>Expenses Summary by Year</h1>
+
+<table class='table table-bordered'>
+  <thead class='table-success'>
+    <tr>
+      <th>Year</th>
+      <th>Total Amount</th>
+      <th>Total Approved</th>
+      <th>Total Not Approved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @totals_by_year.sort.reverse.each do |year, totals| %>
+      <tr>
+        <td><%= link_to year, monthly_status_expenses_path(year), class:'nav-link link-primary' %></td>
+        <td><%= number_to_currency(totals[:total_amount], unit: "€", format: "%u%n") %></td>
+        <td><%= number_to_currency(totals[:total_approved], unit: "€", format: "%u%n") %></td>
+        <td><%= number_to_currency(totals[:total_not_approved], unit: "€", format: "%u%n") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

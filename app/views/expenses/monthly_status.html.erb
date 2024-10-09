@@ -1,0 +1,24 @@
+<h1>Monthly Status for <%= @year %></h1>
+
+<table class='table table-bordered'>
+  <thead class='table-danger'>
+    <tr>
+      <th>Month</th>
+      <th>Total Amount</th>
+      <th>Total Approved</th>
+      <th>Total Not Approved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @monthly_totals.each do |month, totals| %>
+      <tr>
+        <td><%= Date::MONTHNAMES[month] %></td>
+        <td><%= number_to_currency(totals[:total_amount], unit: "€", format: "%u%n") %></td>
+        <td><%= number_to_currency(totals[:total_approved], unit: "€", format: "%u%n") %></td>
+        <td><%= number_to_currency(totals[:total_not_approved], unit: "€", format: "%u%n") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Yearly Summary', status_expenses_path %>
