@@ -10,6 +10,7 @@
 
 require 'faker'
 
+puts 'Create Users...'
 5.times do
   User.create(
     first_name: Faker::Name.first_name,
@@ -21,6 +22,8 @@ years = (2020..2024).to_a
 months = (1..12).to_a
 
 user_ids = User.all.pluck(:id)
+
+puts 'Create Expense...'
 
 years.each do |year|
   months.each do |month|
@@ -35,3 +38,5 @@ years.each do |year|
     end
   end
 end
+
+puts 'Done!'
