@@ -1,0 +1,44 @@
+<p style="color: green"><%= notice %></p>
+
+<table class='table table-bordered'>
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Claimer name</th>
+      <th scope="col">Expense date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Approved</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= @expense.id %>
+      </td>
+      <td>
+        <%= @expense.user.decorate.full_name %>
+      </td>
+      <td>
+        <%= @expense.expense_date %>
+      </td>
+      <td>
+        <%= @expense.description %>
+      </td>
+      <td>
+        <%= @expense.amount %>
+      </td>
+      <td>
+        <%= @expense.approved %>
+      </td>
+      <td>
+        <%= link_to "Edit", edit_expense_path(@expense), class:'ms-2 btn btn-success btn-sm' %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class='d-flex justify-content-end align-items-center'>
+  <%= link_to "Back to expenses", expenses_path, class:'ms-3 btn btn-outline-dark btn-sm' %>
+</div>

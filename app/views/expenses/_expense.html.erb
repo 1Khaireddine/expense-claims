@@ -1,0 +1,27 @@
+<tr id="<%= dom_id expense %>">
+  <td>
+    <%= expense.id %>
+  </td>
+  <td>
+    <%= expense.user.decorate.full_name %>
+  </td>
+  <td>
+    <%= expense.expense_date %>
+  </td>
+  <td>
+    <%= expense.description %>
+  </td>
+  <td>
+    <%= expense.formatted_amount %>
+  </td>
+  <td>
+    <%= expense.approval_status %>
+  </td>
+  <td>
+    <div class='d-flex'>
+      <%= link_to "Show", expense, class:'btn btn-primary btn-sm' %>
+      <%= link_to "Edit", edit_expense_path(expense), class:'ms-2 btn btn-success btn-sm' %>
+      <%= button_to "Destroy", expense, method: :delete, class: 'ms-2 btn btn-danger btn-sm', data: { confirm: 'Are you sure you want to delete this expense?' } %>
+    </div>
+  </td>
+</tr>

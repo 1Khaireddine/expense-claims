@@ -1,0 +1,10 @@
+<h1>Editing expense</h1>
+
+<%= render "form", expense: @expense %>
+
+<hr class='mt-3'>
+
+<div class="d-flex">
+  <%= link_to "Show this expense", @expense, class:'btn btn-outline-success btn-sm' %>
+  <%= link_to "Back to expenses", expenses_path, class:'btn btn-outline-dark btn-sm ms-2 ' %>
+</div>
