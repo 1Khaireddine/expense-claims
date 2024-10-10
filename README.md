@@ -36,3 +36,7 @@ POSTGRES_DB=your_db_name
 - docker compose run web rake db:create db:migrate
 - Access the Application
 - http://localhost:3000
+
+## Test
+
+**`bundle exec rspec`**
