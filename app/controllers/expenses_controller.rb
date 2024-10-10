@@ -1,8 +1,13 @@
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: %i[ show edit update destroy ]
+  before_action :set_expense, only: %i[ show edit update destroy approved]
 
   def index
-    @expenses = Expense.all.includes(:user).order(created_at: :desc).map { |expense| ExpenseDecorator.new(expense) }
+    @expenses = Expense.includes(:user)
+                        .order(created_at: :desc)
+                        .page(params[:page])
+                        .per(10)
+
+    @decorated_expenses = @expenses.map { |expense| ExpenseDecorator.new(expense) }
   end
 
   def show
@@ -47,6 +52,20 @@ class ExpensesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to expenses_path, status: :see_other, notice: "Expense was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def approved
+    if @expense.update(approved: true)
+      respond_to do |format|
+        format.html { redirect_to expenses_path, status: :see_other, notice: "Expense was successfully approved." }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to expenses_path, status: :unprocessable_entity, alert: "Expense approval failed." }
+        format.json { render json: @expense.errors, status: :unprocessable_entity }
+      end
     end
   end
 

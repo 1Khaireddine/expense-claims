@@ -1,7 +1,7 @@
 <%= form_with(model: expense) do |form| %>
   <% if expense.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+    <div class='border-danger border-1 bg-danger-subtle p-3 rounded-1 mb-3'>
+      <h3><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h3>
 
       <ul>
         <% expense.errors.each do |error| %>
@@ -13,7 +13,9 @@
 
   <div class='mb-2'>
     <%= form.label :claimer_name, class:'form-label' %>
-    <%= form.select :user_id, options_for_select(User.pluck(:first_name, :id), expense.user_id), {}, class:'form-select' %>
+    <%= form.select :user_id,
+            options_for_select(User.all.decorate.map { |user| [user.full_name, user.id] }, expense.user_id),
+            {}, class: 'form-select' %>
   </div>
 
   <div class='mb-2'>

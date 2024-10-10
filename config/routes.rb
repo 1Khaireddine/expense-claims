@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   resources :expenses do
+    member do
+      get 'approved'
+    end
     collection do
       get :status
       get 'monthly_status/:year', to: 'expenses#monthly_status', as: 'monthly_status'

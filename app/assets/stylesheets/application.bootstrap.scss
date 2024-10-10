@@ -1,2 +1,50 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    padding: 0 5px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid #aaa;
+
+    a {
+      display: block;
+      line-height: 32px;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+
+  .first {
+    border-radius: 4px 0 0 4px
+  }
+
+
+  .prev {}
+
+  .page {
+    width: 34px;
+    line-height: 32px;
+
+    .gap {}
+
+    .current {}
+  }
+
+  .next {}
+
+  .last {
+    border-radius: 0 4px 4px 0;
+  }
+
+}

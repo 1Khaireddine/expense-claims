@@ -5,21 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <div class="container vh-100">
-      <div class="row align-items-center text-center p-3">
-        <header>
-          <div class="col-12">
-            <%= link_to 'Expense Claims', expenses_path, class: 'btn btn-outline-warning' %>
-            <%= link_to 'Expense Status', status_expenses_path, class: 'btn btn-outline-success' %>
-          </div>
-        </header>
-      </div>
       <div class="row">
         <%= yield %>
       </div>
